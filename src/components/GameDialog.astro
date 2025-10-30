@@ -1,0 +1,32 @@
+---
+interface Props {
+    /** HTML id attribute for the dialog element */
+    id?: string;
+}
+
+const { id = "card" } = Astro.props;
+---
+
+<dialog id={id} class="card">
+    <div id="cardContent" class="card-content">
+        <slot />
+    </div>
+</dialog>
+
+<style is:global>
+    .card::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .card {
+        border: none;
+        border-radius: 12px;
+        padding: 0;
+        width: min(900px, calc(100% - 24px));
+    }
+    .card-content {
+        background: #ff8c00;
+        color: #fff;
+        padding: 24px;
+        border-radius: 12px;
+    }
+</style>

@@ -1,0 +1,324 @@
+{
+    "id": "kids",
+    "title": "Kids Jeopardy",
+    "levels": [
+        {
+            "level": 1,
+            "categories": [
+                {
+                    "name": "Animals",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "This animal says 'meow'",
+                            "answer": "What is a cat?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "The largest land animal",
+                            "answer": "What is an elephant?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "This striped African horse",
+                            "answer": "What is a zebra?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "King of the jungle",
+                            "answer": "What is a lion?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "This mammal can fly",
+                            "answer": "What is a bat?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Colors",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Bananas are this color",
+                            "answer": "What is yellow?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "The sky on a clear day",
+                            "answer": "What is blue?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Grass is usually this color",
+                            "answer": "What is green?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Strawberries are this color",
+                            "answer": "What is red?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Mixing red and blue makes",
+                            "answer": "What is purple?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Math",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "2 + 2",
+                            "answer": "What is 4?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "10 - 3",
+                            "answer": "What is 7?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "5 x 5",
+                            "answer": "What is 25?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "9 + 8",
+                            "answer": "What is 17?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "12 / 3",
+                            "answer": "What is 4?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Places",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "The country we live in (example)",
+                            "answer": "What is the USA?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "This is the capital of France",
+                            "answer": "What is Paris?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "A place with lots of sand and little rain",
+                            "answer": "What is a desert?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "This is the largest ocean",
+                            "answer": "What is the Pacific?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "This place has the Eiffel Tower",
+                            "answer": "What is Paris?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Food",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "This dairy food is used on pizza",
+                            "answer": "What is cheese?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "A crunchy orange vegetable rabbits like",
+                            "answer": "What is a carrot?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Sweet frozen treat in a cone",
+                            "answer": "What is ice cream?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "This fruit keeps the doctor away",
+                            "answer": "What is an apple?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "This is made from cocoa beans",
+                            "answer": "What is chocolate?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "categories": [
+                {
+                    "name": "Animals+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Fastest land animal",
+                            "answer": "What is a cheetah?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "This mammal lays eggs",
+                            "answer": "What is a platypus?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Largest shark species",
+                            "answer": "What is a whale shark?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Only marsupial in North America",
+                            "answer": "What is an opossum?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "A baby kangaroo",
+                            "answer": "What is a joey?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Colors+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Mixing yellow and blue",
+                            "answer": "What is green?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Opposite of black",
+                            "answer": "What is white?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Traffic stop color",
+                            "answer": "What is red?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Pumpkins are mostly",
+                            "answer": "What is orange?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Color of coal",
+                            "answer": "What is black?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Math+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "12 + 15",
+                            "answer": "What is 27?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "9 x 7",
+                            "answer": "What is 63?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "81 / 9",
+                            "answer": "What is 9?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "15 - 19 (absolute value)",
+                            "answer": "What is 4?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Square of 12",
+                            "answer": "What is 144?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Places+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "This continent has the Sahara",
+                            "answer": "What is Africa?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Mount Everest is here",
+                            "answer": "What is Asia?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "The country shaped like a boot",
+                            "answer": "What is Italy?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Capital of Japan",
+                            "answer": "What is Tokyo?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "The outback is in this country",
+                            "answer": "What is Australia?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Food+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Main ingredient in guacamole",
+                            "answer": "What is avocado?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Sushi is from this country",
+                            "answer": "What is Japan?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Pasta sauce made of basil, pine nuts",
+                            "answer": "What is pesto?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Milk without lactose is called",
+                            "answer": "What is lactose-free?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "French fries are made from",
+                            "answer": "What are potatoes?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "final": {
+                "question": "Final: A red planet in our solar system",
+                "answer": "What is Mars?",
+                "value": 2000
+            }
+        }
+    ]
+}

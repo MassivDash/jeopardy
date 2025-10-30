@@ -1,11 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const games = await getCollection("games");
 ---
 
 <Layout>
-	<Welcome />
+	<main class="container">
+		<h1>Jeopardy</h1>
+		<p>Select a game:</p>
+		<ul class="games">
+			{
+				games.map((game: (typeof games)[0]) => (
+					<li>
+						<a href={`/game/${game.id}`}>
+							{game.data.title || game.id}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+
+	<style>
+		.container {
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 2rem;
+		}
+		h1 {
+			margin: 0 0 0.5rem 0;
+			font-family: system-ui, Arial, sans-serif;
+			color: #ff8c00;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+		p {
+			margin: 0 0 1rem 0;
+			color: #fff;
+		}
+		.games {
+			list-style: none;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+			gap: 12px;
+		}
+		.games li {
+			background: #ff8c00;
+			border-radius: 8px;
+		}
+		.games a {
+			display: block;
+			padding: 14px 16px;
+			color: #fff;
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.games a:hover {
+			background: #ff9933;
+			border-radius: 8px;
+		}
+	</style>
 </Layout>

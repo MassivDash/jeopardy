@@ -1,0 +1,29 @@
+---
+interface Props {
+    /** Category name to display */
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="cell header">{name}</div>
+
+<style is:global>
+    .cell.header {
+        background: #ff6600;
+        color: #fff;
+        font-size: 3rem;
+        font-weight: 900;
+        padding: 12px;
+        min-height: 80px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        letter-spacing: 1px;
+    }
+</style>

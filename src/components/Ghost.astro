@@ -1,0 +1,182 @@
+---
+interface Props {
+    /** Position of the ghost on screen */
+    position: "left" | "right";
+}
+
+const { position } = Astro.props;
+---
+
+<div class:list={["ghost-container", `ghost-${position}`]}>
+    <div class="ghost-body">
+        <div class="ghost-body-copy"></div>
+        <div class="ghost-head">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="down-bubble">
+            <div class="bubble-1"></div>
+            <div class="bubble-2"></div>
+            <div class="bubble-3"></div>
+            <div class="bubble-4"></div>
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .ghost-container {
+        position: fixed;
+        width: 200px;
+        height: 300px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .ghost-left {
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .ghost-right {
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .ghost-body {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        opacity: 0.8;
+        top: 0;
+        left: 0;
+        animation-name: floating;
+        animation-duration: 10s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .ghost-body-copy {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .ghost-head {
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        top: -25%;
+        left: 25%;
+        background-color: white;
+        border-radius: 90px;
+        z-index: 2;
+    }
+
+    .eye-left,
+    .eye-right {
+        position: absolute;
+        height: 22%;
+        width: 20%;
+        top: 40%;
+        background-color: black;
+        border-radius: 50%;
+        z-index: 3;
+    }
+
+    .eye-left {
+        left: 22%;
+    }
+
+    .eye-right {
+        right: 22%;
+    }
+
+    .mouth {
+        position: absolute;
+        height: 26%;
+        width: 24%;
+        left: 38%;
+        top: 70%;
+        background-color: black;
+        border-radius: 50%;
+        z-index: 3;
+    }
+
+    .down-bubble {
+        position: absolute;
+        height: 50%;
+        width: 100%;
+        top: 50%;
+    }
+
+    .bubble-1,
+    .bubble-2,
+    .bubble-3,
+    .bubble-4 {
+        position: absolute;
+        height: 100%;
+        width: 25%;
+        background-color: white;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        animation-name: bubble;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    .bubble-1 {
+        left: 0;
+        animation-duration: 2.8s;
+    }
+
+    .bubble-2 {
+        left: 25%;
+        animation-duration: 3.2s;
+    }
+
+    .bubble-3 {
+        right: 25%;
+        animation-duration: 3.4s;
+    }
+
+    .bubble-4 {
+        right: 0;
+        animation-duration: 3s;
+    }
+
+    @keyframes bubble {
+        0% {
+            top: 0;
+        }
+        50% {
+            top: 20%;
+        }
+        100% {
+            top: 0;
+        }
+    }
+
+    @keyframes floating {
+        0% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: translateY(30px);
+        }
+        50% {
+            transform: translateY(0);
+        }
+        70% {
+            transform: translateY(-30px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+</style>

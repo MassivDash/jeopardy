@@ -1,0 +1,16 @@
+{
+    "games": [
+        {
+            "id": "kids",
+            "title": "Kids Jeopardy"
+        },
+        {
+            "id": "adults",
+            "title": "Adults Jeopardy"
+        },
+        {
+            "id": "leo1",
+            "title": "Leo 1 Jeopardy"
+        }
+    ]
+}

@@ -1,0 +1,324 @@
+{
+    "id": "adults",
+    "title": "Adults Jeopardy",
+    "levels": [
+        {
+            "level": 1,
+            "categories": [
+                {
+                    "name": "History",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Year of the moon landing",
+                            "answer": "What is 1969?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "First US president",
+                            "answer": "Who is George Washington?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "The Great Wall country",
+                            "answer": "What is China?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Roman emperor assassinated on the Ides of March",
+                            "answer": "Who is Julius Caesar?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Napoleon's final defeat",
+                            "answer": "What is Waterloo?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Science",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "H2O is",
+                            "answer": "What is water?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Center of an atom",
+                            "answer": "What is the nucleus?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Earth's force that pulls objects down",
+                            "answer": "What is gravity?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Speed of light is about",
+                            "answer": "What is 300,000 km/s?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Our galaxy name",
+                            "answer": "What is the Milky Way?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Literature",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Author of '1984'",
+                            "answer": "Who is George Orwell?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Shakespeare's tragic Danish prince",
+                            "answer": "Who is Hamlet?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Homeric epic about the Trojan War",
+                            "answer": "What is the Iliad?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "'To Kill a Mockingbird' author",
+                            "answer": "Who is Harper Lee?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Dystopian novel by Aldous Huxley",
+                            "answer": "What is Brave New World?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Geography",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Capital of Canada",
+                            "answer": "What is Ottawa?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "The Nile flows into this sea",
+                            "answer": "What is the Mediterranean?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Highest mountain range",
+                            "answer": "What are the Himalayas?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Brazil's primary language",
+                            "answer": "What is Portuguese?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Lake between Israel and Jordan",
+                            "answer": "What is the Dead Sea?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pop Culture",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Sci-fi saga with the Force",
+                            "answer": "What is Star Wars?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Singer of 'Thriller'",
+                            "answer": "Who is Michael Jackson?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Streaming service with the red N",
+                            "answer": "What is Netflix?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Award for films in Hollywood",
+                            "answer": "What are the Oscars?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Author of 'Harry Potter'",
+                            "answer": "Who is J.K. Rowling?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "categories": [
+                {
+                    "name": "History+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Year WWII ended",
+                            "answer": "What is 1945?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Architect of the New Deal",
+                            "answer": "Who is FDR?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "City where the Berlin Wall stood",
+                            "answer": "What is Berlin?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Empire ruled by Genghis Khan",
+                            "answer": "What is the Mongol Empire?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "The Magna Carta year",
+                            "answer": "What is 1215?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Science+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Smallest unit of life",
+                            "answer": "What is a cell?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Gas plants use for photosynthesis",
+                            "answer": "What is CO2?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "He proposed general relativity",
+                            "answer": "Who is Einstein?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Charge of an electron",
+                            "answer": "What is negative?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "pH below 7 is",
+                            "answer": "What is acidic?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Literature+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "'Pride and Prejudice' author",
+                            "answer": "Who is Jane Austen?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Dante's epic poem",
+                            "answer": "What is The Divine Comedy?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "'Moby-Dick' captain",
+                            "answer": "Who is Ahab?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Greek author of the Odyssey",
+                            "answer": "Who is Homer?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "'The Catcher in the Rye' protagonist",
+                            "answer": "Who is Holden Caulfield?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Geography+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Largest desert",
+                            "answer": "What is Antarctica (polar) or Sahara (hot)?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "River through Egypt",
+                            "answer": "What is the Nile?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Capital of New Zealand",
+                            "answer": "What is Wellington?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Country with city of Kyoto",
+                            "answer": "What is Japan?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "African country formerly Abyssinia",
+                            "answer": "What is Ethiopia?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pop Culture+",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Marvel hero with a shield",
+                            "answer": "Who is Captain America?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Band known as the Fab Four",
+                            "answer": "Who are The Beatles?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "TV awards for broadcasting",
+                            "answer": "What are the Emmys?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "'Queen of Pop'",
+                            "answer": "Who is Madonna?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Creator of 'The Simpsons'",
+                            "answer": "Who is Matt Groening?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "final": {
+                "question": "Final: Capital of Iceland",
+                "answer": "What is Reykjavik?",
+                "value": 2000
+            }
+        }
+    ]
+}

@@ -1,0 +1,434 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+import Ghost from "../../components/Ghost.astro";
+import GameBoard from "../../components/GameBoard.astro";
+import GameDialog from "../../components/GameDialog.astro";
+
+const { id } = Astro.params;
+export const prerender = false;
+
+let gameData = null;
+if (id) {
+    const entry = await getEntry("games", id);
+    if (entry) {
+        gameData = {
+            id: entry.id,
+            title: entry.data.title,
+            levels: entry.data.levels,
+        };
+    }
+}
+---
+
+<Layout>
+    <main class="container">
+        <header class="top">
+            <a class="back" href="/">← Menu</a>
+            <h1 id="title">{gameData?.title || "Jeopardy"}</h1>
+            <div class="spacer"></div>
+        </header>
+
+        <GameBoard />
+
+        <Ghost position="left" />
+        <Ghost position="right" />
+
+        <div class="controls">
+            <button id="nextLevel" class="next">Go to next stage →</button>
+        </div>
+        <div id="status" class="status" aria-live="polite"></div>
+
+        <GameDialog />
+    </main>
+
+    <script define:vars={{ gameData }}>
+        // Dialog and board rendering utilities
+        class DialogManager {
+            constructor(dialogId, contentId) {
+                this.dialogId = dialogId;
+                this.contentId = contentId;
+                this.revealState = "question";
+            }
+
+            open({ type, value, question, answer, onClose }) {
+                const dlg = document.getElementById(this.dialogId);
+                const content = document.getElementById(this.contentId);
+                if (!dlg || !content) return;
+
+                this.revealState = "question";
+                content.innerHTML = "";
+
+                const wrap = document.createElement("div");
+                wrap.className = "qa";
+
+                if (type === "clue" && value) {
+                    const amount = document.createElement("div");
+                    amount.className = "amount";
+                    amount.textContent = `$${value}`;
+                    wrap.appendChild(amount);
+                }
+
+                const text = document.createElement("div");
+                text.className = "text";
+                text.textContent = question;
+                wrap.appendChild(text);
+
+                const footer = document.createElement("div");
+                footer.className = "footer";
+
+                const hint = document.createElement("span");
+                hint.className = "hint";
+                hint.textContent = "Click to reveal answer";
+                footer.appendChild(hint);
+
+                wrap.addEventListener("click", () => {
+                    if (this.revealState === "question") {
+                        text.textContent = answer;
+                        hint.textContent = "Click to close";
+                        this.revealState = "answer";
+                    } else {
+                        dlg.close();
+                        if (typeof onClose === "function") {
+                            onClose();
+                        }
+                    }
+                });
+
+                content.appendChild(wrap);
+                content.appendChild(footer);
+
+                if (!dlg.open) {
+                    dlg.showModal();
+                }
+            }
+        }
+
+        class BoardRenderer {
+            constructor(boardId, onCellClick, onFinalClick) {
+                this.boardId = boardId;
+                this.onCellClick = onCellClick;
+                this.onFinalClick = onFinalClick;
+            }
+
+            render(level) {
+                const board = document.getElementById(this.boardId);
+                if (!board) return;
+
+                if (level.final) {
+                    this.renderFinal(level.final);
+                    return;
+                }
+
+                if (!level.categories || level.categories.length === 0) {
+                    return;
+                }
+
+                const categories = level.categories;
+                const cols = categories.length;
+                const rows = categories[0]?.questions?.length || 0;
+
+                board.innerHTML = "";
+                board.style.setProperty("--cols", String(cols));
+                board.style.setProperty("--rows", String(rows + 1));
+
+                // Header row: category names
+                categories.forEach((cat) => {
+                    const cell = document.createElement("div");
+                    cell.className = "cell header";
+                    cell.textContent = cat.name;
+                    board.appendChild(cell);
+                });
+
+                // Question cells: fill row by row
+                for (let rIdx = 0; rIdx < rows; rIdx++) {
+                    categories.forEach((cat, cIdx) => {
+                        const q = cat.questions[rIdx];
+                        if (!q) return;
+
+                        const cell = document.createElement("button");
+                        cell.className = "cell value";
+                        if (q.used) {
+                            cell.classList.add("used");
+                            cell.disabled = true;
+                            cell.textContent = "";
+                        } else {
+                            cell.textContent = `$${q.value}`;
+                            cell.addEventListener("click", () =>
+                                this.onCellClick(cIdx, rIdx),
+                            );
+                        }
+                        cell.dataset.col = String(cIdx);
+                        cell.dataset.row = String(rIdx);
+                        board.appendChild(cell);
+                    });
+                }
+            }
+
+            renderFinal(final) {
+                const board = document.getElementById(this.boardId);
+                if (!board) return;
+
+                board.innerHTML = "";
+                const finalBtn = document.createElement("button");
+                finalBtn.className = "final-btn";
+                finalBtn.textContent = `Final Jeopardy (${final.value})`;
+                finalBtn.addEventListener("click", this.onFinalClick);
+                board.appendChild(finalBtn);
+            }
+        }
+
+        function init() {
+            const statusEl = document.getElementById("status");
+            const nextBtn = document.getElementById("nextLevel");
+
+            if (!statusEl) return;
+
+            /** State **/
+            let currentLevelIndex = 0;
+            let data = gameData;
+
+            // Use gameData from server or fallback to sample
+            if (!data || !data.levels || data.levels.length === 0) {
+                statusEl.textContent =
+                    "No game data found. Showing sample board.";
+                data = buildSampleGame();
+            } else {
+                statusEl.textContent = "";
+            }
+
+            // Initialize managers
+            const dialogManager = new DialogManager("card", "cardContent");
+            const boardRenderer = new BoardRenderer(
+                "board",
+                (cIdx, rIdx) => handleCellClick(cIdx, rIdx),
+                () => handleFinalClick(),
+            );
+
+            function buildSampleGame() {
+                const baseValuesL1 = [100, 200, 300, 400, 500];
+                const baseValuesL2 = [200, 400, 600, 800, 1000];
+                return {
+                    id: gameData?.id || "sample",
+                    title: "Sample Jeopardy",
+                    levels: [
+                        {
+                            level: 1,
+                            categories: Array.from({ length: 5 }).map(
+                                (_, c) => ({
+                                    name: `Category ${c + 1}`,
+                                    questions: baseValuesL1.map((v) => ({
+                                        value: v,
+                                        question: `Sample Question $${v}`,
+                                        answer: `Sample Answer $${v}`,
+                                    })),
+                                }),
+                            ),
+                        },
+                        {
+                            level: 2,
+                            categories: Array.from({ length: 5 }).map(
+                                (_, c) => ({
+                                    name: `Category ${c + 1}+`,
+                                    questions: baseValuesL2.map((v) => ({
+                                        value: v,
+                                        question: `Sample Question $${v}`,
+                                        answer: `Sample Answer $${v}`,
+                                    })),
+                                }),
+                            ),
+                        },
+                        {
+                            level: 3,
+                            final: {
+                                question: "Final: Sample Final",
+                                answer: "Sample Answer",
+                                value: 2000,
+                            },
+                        },
+                    ],
+                };
+            }
+
+            function renderBoard() {
+                const level = data.levels[currentLevelIndex];
+
+                // Ensure categories exist
+                if (
+                    !level.final &&
+                    (!level.categories || level.categories.length === 0)
+                ) {
+                    const baseValues =
+                        currentLevelIndex === 0
+                            ? [100, 200, 300, 400, 500]
+                            : [200, 400, 600, 800, 1000];
+                    level.categories = Array.from({ length: 5 }).map(
+                        (_, c) => ({
+                            name: `Category ${c + 1}`,
+                            questions: baseValues.map((v) => ({
+                                value: v,
+                                question: `Sample Question $${v}`,
+                                answer: `Sample Answer $${v}`,
+                            })),
+                        }),
+                    );
+                }
+
+                boardRenderer.render(level);
+
+                // Controls visibility
+                if (nextBtn) {
+                    nextBtn.style.display = level.final
+                        ? "none"
+                        : "inline-block";
+                }
+            }
+
+            function handleCellClick(cIdx, rIdx) {
+                const level = data.levels[currentLevelIndex];
+                const q = level.categories?.[cIdx]?.questions[rIdx];
+                if (!q || q.used) return;
+
+                dialogManager.open({
+                    type: "clue",
+                    value: q.value,
+                    question: q.question,
+                    answer: q.answer,
+                    onClose: () => {
+                        q.used = true;
+                        renderBoard();
+                        maybeAdvanceLevel();
+                    },
+                });
+            }
+
+            function handleFinalClick() {
+                const level = data.levels[currentLevelIndex];
+                if (!level.final) return;
+
+                dialogManager.open({
+                    type: "final",
+                    question: level.final.question,
+                    answer: level.final.answer,
+                    onClose: () => {
+                        window.location.href = "/";
+                    },
+                });
+            }
+
+            function maybeAdvanceLevel() {
+                const level = data.levels[currentLevelIndex];
+                if (level.final || !level.categories) return;
+
+                const allUsed = level.categories.every((cat) =>
+                    cat.questions.every((q) => q.used ?? false),
+                );
+                if (allUsed) {
+                    currentLevelIndex += 1;
+                    renderBoard();
+                }
+            }
+
+            // Manual next stage button
+            if (nextBtn) {
+                nextBtn.addEventListener("click", () => {
+                    const max = data.levels.length - 1;
+                    if (currentLevelIndex < max) {
+                        currentLevelIndex += 1;
+                        renderBoard();
+                    }
+                });
+            }
+
+            // Initialize board
+            currentLevelIndex = 0;
+            renderBoard();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init);
+        } else {
+            init();
+        }
+    </script>
+
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1rem 3rem;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .back {
+            color: #ff8c00;
+            text-decoration: none;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
+        .top h1 {
+            flex: 1;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-family: system-ui, Arial, sans-serif;
+            font-size: 3rem;
+            color: #ff8c00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .spacer {
+            width: 60px;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .final-btn {
+            display: block;
+            width: 100%;
+            padding: 24px;
+            background: #ff8c00;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 3rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .final-btn:hover {
+            background: #ff9933;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .next {
+            background: #ff8c00;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .next:hover {
+            background: #ff9933;
+        }
+        .status {
+            text-align: center;
+            margin-top: 8px;
+            color: #fff;
+            font-size: 1.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</Layout>

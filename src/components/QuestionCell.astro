@@ -1,0 +1,50 @@
+---
+interface Props {
+    /** Dollar value of the question (e.g., 100, 200) */
+    value: number;
+    /** Whether this question has already been used/answered */
+    used?: boolean;
+}
+
+const { value, used = false } = Astro.props;
+---
+
+<button
+    class:list={["cell", "value", { used }]}
+    data-value={value}
+    disabled={used}
+>
+    {used ? "" : `$${value}`}
+</button>
+
+<style is:global>
+    .cell.value {
+        font-size: 4rem;
+        cursor: pointer;
+        background: #ff7f00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        border-radius: 6px;
+        padding: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+        border: none;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .cell.value:hover {
+        background: #ff9933;
+    }
+
+    .cell.value.used {
+        background: #8b4513;
+        color: transparent;
+        cursor: default;
+    }
+</style>
