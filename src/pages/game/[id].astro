@@ -4,6 +4,8 @@ import { getEntry } from "astro:content";
 import Ghost from "../../components/Ghost.astro";
 import GameBoard from "../../components/GameBoard.astro";
 import GameDialog from "../../components/GameDialog.astro";
+import PlayerSetup from "../../components/PlayerSetup.astro";
+import ScoreBar from "../../components/ScoreBar.astro";
 
 const { id } = Astro.params;
 export const prerender = false;
@@ -40,9 +42,119 @@ if (id) {
         <div id="status" class="status" aria-live="polite"></div>
 
         <GameDialog />
+        <PlayerSetup />
+        <ScoreBar />
     </main>
 
     <script define:vars={{ gameData }}>
+        // Player Management
+        class PlayerManager {
+            constructor() {
+                this.players = [];
+                this.loadFromStorage();
+            }
+
+            loadFromStorage() {
+                const stored = localStorage.getItem(`players_${gameData?.id}`);
+                if (stored) {
+                    this.players = JSON.parse(stored);
+                }
+            }
+
+            saveToStorage() {
+                localStorage.setItem(
+                    `players_${gameData?.id}`,
+                    JSON.stringify(this.players),
+                );
+            }
+
+            addPlayer(name = "") {
+                const id = Date.now().toString();
+                this.players.push({
+                    id,
+                    name: name || `Player ${this.players.length + 1}`,
+                    score: 0,
+                });
+                this.saveToStorage();
+                return id;
+            }
+
+            removePlayer(id) {
+                this.players = this.players.filter((p) => p.id !== id);
+                this.saveToStorage();
+            }
+
+            updatePlayer(id, name) {
+                const player = this.players.find((p) => p.id === id);
+                if (player) {
+                    player.name = name;
+                    this.saveToStorage();
+                }
+            }
+
+            updateScore(playerId, amount) {
+                const player = this.players.find((p) => p.id === playerId);
+                if (player) {
+                    player.score += amount;
+                    this.saveToStorage();
+                }
+            }
+
+            getPlayer(id) {
+                return this.players.find((p) => p.id === id);
+            }
+
+            getAll() {
+                return this.players;
+            }
+
+            clear() {
+                this.players = [];
+                this.saveToStorage();
+            }
+        }
+
+        // Score Bar Manager
+        class ScoreBarManager {
+            constructor(playerManager) {
+                this.playerManager = playerManager;
+                this.scoresList = document.getElementById("scoresList");
+            }
+
+            update() {
+                if (!this.scoresList) return;
+
+                const players = this.playerManager.getAll();
+                if (players.length === 0) {
+                    this.scoresList.innerHTML = "";
+                    return;
+                }
+
+                const scores = players.map((p) => p.score);
+                const maxScore = Math.max(...scores);
+
+                this.scoresList.innerHTML = players
+                    .map((player) => {
+                        const isWinner =
+                            player.score === maxScore && maxScore > 0;
+                        const scoreClass = player.score < 0 ? "negative" : "";
+                        return `
+                        <div class="score-item ${isWinner ? "winner" : ""}">
+                            <div class="player-name">${this.escapeHtml(player.name)}</div>
+                            <div class="player-score ${scoreClass}">$${player.score}</div>
+                        </div>
+                    `;
+                    })
+                    .join("");
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement("div");
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
         // Dialog and board rendering utilities
         class DialogManager {
             constructor(dialogId, contentId) {
@@ -51,7 +163,16 @@ if (id) {
                 this.revealState = "question";
             }
 
-            open({ type, value, question, answer, onClose }) {
+            open({
+                type,
+                value,
+                question,
+                answer,
+                onClose,
+                onPlayerSelect,
+                players,
+                isFinal,
+            }) {
                 const dlg = document.getElementById(this.dialogId);
                 const content = document.getElementById(this.contentId);
                 if (!dlg || !content) return;
@@ -63,7 +184,8 @@ if (id) {
                     type === "clue" && value
                         ? `<div class="amount">$${value}</div>`
                         : "";
-                const dialogHtml = `
+
+                let dialogHtml = `
                     <div class="qa">
                         ${amountHtml}
                         <div class="text">${this.escapeHtml(question)}</div>
@@ -83,8 +205,26 @@ if (id) {
                     wrap.addEventListener("click", () => {
                         if (this.revealState === "question") {
                             text.textContent = answer;
-                            hint.textContent = "Click to close";
+                            hint.textContent = "Click to continue";
                             this.revealState = "answer";
+
+                            // After revealing answer, show player selection if not Final Jeopardy
+                            if (
+                                !isFinal &&
+                                onPlayerSelect &&
+                                players &&
+                                players.length > 0
+                            ) {
+                                setTimeout(() => {
+                                    this.showPlayerSelection(
+                                        dlg,
+                                        content,
+                                        players,
+                                        value,
+                                        onPlayerSelect,
+                                    );
+                                }, 500);
+                            }
                         } else {
                             dlg.close();
                             if (typeof onClose === "function") {
@@ -93,6 +233,210 @@ if (id) {
                         }
                     });
                 }
+
+                if (!dlg.open) {
+                    dlg.showModal();
+                }
+            }
+
+            showPlayerSelection(dlg, content, players, value, onPlayerSelect) {
+                const playerButtons = players
+                    .map(
+                        (player, idx) =>
+                            `<button class="player-select-btn" data-player-id="${player.id}">${this.escapeHtml(player.name)}</button>`,
+                    )
+                    .join("");
+
+                const selectionHtml = `
+                    <div class="player-selection">
+                        <h3>Who answered?</h3>
+                        <div class="player-buttons">
+                            ${playerButtons}
+                        </div>
+                    </div>
+                `;
+
+                content.innerHTML = selectionHtml;
+
+                content
+                    .querySelectorAll(".player-select-btn")
+                    .forEach((btn) => {
+                        btn.addEventListener("click", () => {
+                            const playerId = btn.dataset.playerId;
+                            dlg.close();
+                            if (onPlayerSelect) {
+                                onPlayerSelect(playerId);
+                            }
+                        });
+                    });
+            }
+
+            showAwardScreen(playerId, playerName, value, onAward) {
+                const dlg = document.getElementById(this.dialogId);
+                const content = document.getElementById(this.contentId);
+                if (!dlg || !content) return;
+
+                const awardHtml = `
+                    <div class="award-screen">
+                        <h3>Award Points: ${this.escapeHtml(playerName)}</h3>
+                        <div class="question-value">Question Value: $${value}</div>
+                        <div class="award-buttons">
+                            <button class="award-btn award-correct">✓ Correct (+$${value})</button>
+                            <button class="award-btn award-wrong">✗ Wrong (-$${value})</button>
+                        </div>
+                    </div>
+                `;
+
+                content.innerHTML = awardHtml;
+
+                content
+                    .querySelector(".award-correct")
+                    .addEventListener("click", () => {
+                        dlg.close();
+                        if (onAward) onAward(playerId, value);
+                    });
+
+                content
+                    .querySelector(".award-wrong")
+                    .addEventListener("click", () => {
+                        dlg.close();
+                        if (onAward) onAward(playerId, -value);
+                    });
+
+                if (!dlg.open) {
+                    dlg.showModal();
+                }
+            }
+
+            showFinalJeopardy(
+                question,
+                answer,
+                players,
+                onComplete,
+                finalValue = 2000,
+            ) {
+                const dlg = document.getElementById(this.dialogId);
+                const content = document.getElementById(this.contentId);
+                if (!dlg || !content) return;
+
+                this.revealState = "question";
+
+                let dialogHtml = `
+                    <div class="qa">
+                        <div class="amount">Final Jeopardy</div>
+                        <div class="text">${this.escapeHtml(question)}</div>
+                    </div>
+                    <div class="footer">
+                        <span class="hint">Click to reveal answer</span>
+                    </div>
+                `;
+
+                content.innerHTML = dialogHtml;
+
+                const wrap = content.querySelector(".qa");
+                const text = content.querySelector(".text");
+                const hint = content.querySelector(".hint");
+
+                if (wrap && text && hint) {
+                    wrap.addEventListener("click", () => {
+                        if (this.revealState === "question") {
+                            text.textContent = answer;
+                            hint.textContent = "Click to award points";
+                            this.revealState = "answer";
+                        } else {
+                            this.showFinalAwardScreen(
+                                players,
+                                onComplete,
+                                finalValue,
+                            );
+                        }
+                    });
+                }
+
+                if (!dlg.open) {
+                    dlg.showModal();
+                }
+            }
+
+            showFinalAwardScreen(players, onComplete, finalValue = 2000) {
+                const dlg = document.getElementById(this.dialogId);
+                const content = document.getElementById(this.contentId);
+                if (!dlg || !content) return;
+                const playerItems = players
+                    .map(
+                        (player) => `
+                    <div class="final-player-item">
+                        <div class="final-player-name">${this.escapeHtml(player.name)}</div>
+                        <div class="final-player-controls">
+                            <input type="number" class="final-wager" value="${Math.max(0, player.score)}" min="0" max="${Math.max(0, player.score)}" data-player-id="${player.id}">
+                            <button class="final-btn-correct" data-player-id="${player.id}">✓ Correct</button>
+                            <button class="final-btn-wrong" data-player-id="${player.id}">✗ Wrong</button>
+                        </div>
+                    </div>
+                `,
+                    )
+                    .join("");
+
+                const finalHtml = `
+                    <div class="final-award-screen">
+                        <h3>Final Jeopardy - Award Points</h3>
+                        <div class="final-players-list">
+                            ${playerItems}
+                        </div>
+                        <div class="final-complete">
+                            <button class="complete-btn">Complete</button>
+                        </div>
+                    </div>
+                `;
+
+                content.innerHTML = finalHtml;
+
+                const awards = {};
+
+                content
+                    .querySelectorAll(".final-btn-correct")
+                    .forEach((btn) => {
+                        btn.addEventListener("click", () => {
+                            const playerId = btn.dataset.playerId;
+                            const wagerInput = content.querySelector(
+                                `.final-wager[data-player-id="${playerId}"]`,
+                            );
+                            const wrongBtn = content.querySelector(
+                                `.final-btn-wrong[data-player-id="${playerId}"]`,
+                            );
+                            const wager = parseInt(wagerInput.value) || 0;
+                            awards[playerId] = wager;
+                            btn.style.background = "#4caf50";
+                            btn.disabled = true;
+                            if (wrongBtn) wrongBtn.disabled = true;
+                            wagerInput.disabled = true;
+                        });
+                    });
+
+                content.querySelectorAll(".final-btn-wrong").forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        const playerId = btn.dataset.playerId;
+                        const wagerInput = content.querySelector(
+                            `.final-wager[data-player-id="${playerId}"]`,
+                        );
+                        const correctBtn = content.querySelector(
+                            `.final-btn-correct[data-player-id="${playerId}"]`,
+                        );
+                        const wager = parseInt(wagerInput.value) || 0;
+                        awards[playerId] = -wager;
+                        btn.style.background = "#cc0000";
+                        btn.disabled = true;
+                        if (correctBtn) correctBtn.disabled = true;
+                        wagerInput.disabled = true;
+                    });
+                });
+
+                content
+                    .querySelector(".complete-btn")
+                    .addEventListener("click", () => {
+                        dlg.close();
+                        if (onComplete) onComplete(awards);
+                    });
 
                 if (!dlg.open) {
                     dlg.showModal();
@@ -202,12 +546,14 @@ if (id) {
         function init() {
             const statusEl = document.getElementById("status");
             const nextBtn = document.getElementById("nextLevel");
+            const playerSetupEl = document.getElementById("playerSetup");
 
             if (!statusEl) return;
 
             /** State **/
             let currentLevelIndex = 0;
             let data = gameData;
+            let gameStarted = false;
 
             // Use gameData from server or fallback to sample
             if (!data || !data.levels || data.levels.length === 0) {
@@ -219,12 +565,136 @@ if (id) {
             }
 
             // Initialize managers
+            const playerManager = new PlayerManager();
+            const scoreBarManager = new ScoreBarManager(playerManager);
             const dialogManager = new DialogManager("card", "cardContent");
             const boardRenderer = new BoardRenderer(
                 "board",
                 (cIdx, rIdx) => handleCellClick(cIdx, rIdx),
                 () => handleFinalClick(),
             );
+
+            // Player Setup Screen
+            function initPlayerSetup() {
+                const playersListEl = document.getElementById("playersList");
+                const addPlayerBtn = document.getElementById("addPlayerBtn");
+                const startGameBtn = document.getElementById("startGameBtn");
+
+                function renderPlayersList() {
+                    if (!playersListEl) return;
+                    const players = playerManager.getAll();
+
+                    playersListEl.innerHTML = players
+                        .map(
+                            (player) => `
+                        <div class="player-item">
+                            <input type="text" 
+                                   value="${player.name}" 
+                                   data-player-id="${player.id}"
+                                   placeholder="Player name"
+                                   class="player-name-input">
+                            <button class="btn-remove" data-player-id="${player.id}">Remove</button>
+                        </div>
+                    `,
+                        )
+                        .join("");
+
+                    // Add event listeners
+                    playersListEl
+                        .querySelectorAll(".player-name-input")
+                        .forEach((input) => {
+                            input.addEventListener("input", (e) => {
+                                const playerId = e.target.dataset.playerId;
+                                playerManager.updatePlayer(
+                                    playerId,
+                                    e.target.value,
+                                );
+                                updateStartButton();
+                            });
+                        });
+
+                    playersListEl
+                        .querySelectorAll(".btn-remove")
+                        .forEach((btn) => {
+                            btn.addEventListener("click", (e) => {
+                                const playerId = e.target.dataset.playerId;
+                                playerManager.removePlayer(playerId);
+                                renderPlayersList();
+                                updateStartButton();
+                            });
+                        });
+                }
+
+                function updateStartButton() {
+                    if (!startGameBtn) return;
+                    const players = playerManager.getAll();
+                    startGameBtn.disabled =
+                        players.length === 0 ||
+                        players.some((p) => !p.name.trim());
+                }
+
+                if (addPlayerBtn) {
+                    addPlayerBtn.addEventListener("click", () => {
+                        playerManager.addPlayer();
+                        renderPlayersList();
+                        updateStartButton();
+                    });
+                }
+
+                if (startGameBtn) {
+                    startGameBtn.addEventListener("click", () => {
+                        const players = playerManager.getAll();
+                        if (players.length === 0) return;
+
+                        if (playerSetupEl) {
+                            playerSetupEl.classList.add("hidden");
+                        }
+                        gameStarted = true;
+                        scoreBarManager.update();
+
+                        // Show board and score bar
+                        const boardEl = document.getElementById("board");
+                        const scoreBarEl = document.getElementById("scoreBar");
+                        if (boardEl) boardEl.style.display = "";
+                        if (scoreBarEl) scoreBarEl.style.display = "";
+                    });
+                }
+
+                // Check if players already exist
+                const existingPlayers = playerManager.getAll();
+                if (
+                    existingPlayers.length > 0 &&
+                    existingPlayers.every((p) => p.name.trim())
+                ) {
+                    // Auto-start if players are already set up
+                    if (playerSetupEl) {
+                        playerSetupEl.classList.add("hidden");
+                    }
+                    gameStarted = true;
+                    scoreBarManager.update();
+
+                    // Show board and score bar
+                    const boardEl = document.getElementById("board");
+                    const scoreBarEl = document.getElementById("scoreBar");
+                    if (boardEl) boardEl.style.display = "";
+                    if (scoreBarEl) scoreBarEl.style.display = "";
+                } else {
+                    // Show setup screen
+                    if (playerSetupEl) {
+                        playerSetupEl.classList.remove("hidden");
+                    }
+                    // Hide board and score bar until game starts
+                    const boardEl = document.getElementById("board");
+                    const scoreBarEl = document.getElementById("scoreBar");
+                    if (boardEl) boardEl.style.display = "none";
+                    if (scoreBarEl) scoreBarEl.style.display = "none";
+
+                    renderPlayersList();
+                    updateStartButton();
+                }
+            }
+
+            initPlayerSetup();
 
             function buildSampleGame() {
                 const baseValuesL1 = [100, 200, 300, 400, 500];
@@ -306,35 +776,78 @@ if (id) {
             }
 
             function handleCellClick(cIdx, rIdx) {
+                if (!gameStarted) return;
+
                 const level = data.levels[currentLevelIndex];
                 const q = level.categories?.[cIdx]?.questions[rIdx];
                 if (!q || q.used) return;
+
+                const players = playerManager.getAll();
+                if (players.length === 0) {
+                    alert("Please add players first!");
+                    return;
+                }
 
                 dialogManager.open({
                     type: "clue",
                     value: q.value,
                     question: q.question,
                     answer: q.answer,
+                    isFinal: false,
+                    players: players,
+                    onPlayerSelect: (playerId) => {
+                        const player = playerManager.getPlayer(playerId);
+                        if (player) {
+                            dialogManager.showAwardScreen(
+                                playerId,
+                                player.name,
+                                q.value,
+                                (playerId, amount) => {
+                                    playerManager.updateScore(playerId, amount);
+                                    scoreBarManager.update();
+                                    q.used = true;
+                                    renderBoard();
+                                    maybeAdvanceLevel();
+                                },
+                            );
+                        }
+                    },
                     onClose: () => {
-                        q.used = true;
-                        renderBoard();
-                        maybeAdvanceLevel();
+                        // This shouldn't normally be called now
                     },
                 });
             }
 
             function handleFinalClick() {
+                if (!gameStarted) return;
+
                 const level = data.levels[currentLevelIndex];
                 if (!level.final) return;
 
-                dialogManager.open({
-                    type: "final",
-                    question: level.final.question,
-                    answer: level.final.answer,
-                    onClose: () => {
-                        window.location.href = "/";
+                const players = playerManager.getAll();
+                if (players.length === 0) {
+                    alert("Please add players first!");
+                    return;
+                }
+
+                dialogManager.showFinalJeopardy(
+                    level.final.question,
+                    level.final.answer,
+                    players,
+                    (awards) => {
+                        // Apply awards
+                        Object.entries(awards).forEach(([playerId, amount]) => {
+                            playerManager.updateScore(playerId, amount);
+                        });
+                        scoreBarManager.update();
+
+                        // Show winner and return to menu
+                        setTimeout(() => {
+                            window.location.href = "/";
+                        }, 2000);
                     },
-                });
+                    level.final.value || 2000,
+                );
             }
 
             function maybeAdvanceLevel() {
@@ -378,7 +891,7 @@ if (id) {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 1rem 3rem;
+            padding: 1rem 1rem 180px;
             position: relative;
         }
         .top {
@@ -561,6 +1074,204 @@ if (id) {
         }
         .hint {
             color: #fff;
+        }
+
+        /* Player Selection Dialog */
+        .player-selection {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .player-selection h3 {
+            font-size: 2.5rem;
+            margin: 0 0 24px 0;
+            color: #fff;
+        }
+
+        .player-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .player-select-btn {
+            padding: 16px 24px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .player-select-btn:hover {
+            background: #66bb6a;
+        }
+
+        /* Award Screen */
+        .award-screen {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .award-screen h3 {
+            font-size: 2.5rem;
+            margin: 0 0 16px 0;
+            color: #fff;
+        }
+
+        .question-value {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .award-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .award-btn {
+            padding: 20px 32px;
+            font-size: 2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .award-correct {
+            background: #4caf50;
+        }
+
+        .award-correct:hover {
+            background: #66bb6a;
+        }
+
+        .award-wrong {
+            background: #cc0000;
+        }
+
+        .award-wrong:hover {
+            background: #ff0000;
+        }
+
+        /* Final Jeopardy Screen */
+        .final-award-screen {
+            padding: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .final-award-screen h3 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0 0 24px 0;
+            color: #fff;
+        }
+
+        .final-players-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .final-player-item {
+            background: #2d2d2d;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .final-player-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .final-player-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .final-wager {
+            padding: 10px;
+            font-size: 1.4rem;
+            border: 2px solid #555;
+            border-radius: 6px;
+            background: #1a1a1a;
+            color: #fff;
+            width: 120px;
+        }
+
+        .final-wager:focus {
+            outline: none;
+            border-color: #ff8c00;
+        }
+
+        .final-btn-correct,
+        .final-btn-wrong {
+            padding: 12px 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #fff;
+            flex: 1;
+        }
+
+        .final-btn-correct {
+            background: #4caf50;
+        }
+
+        .final-btn-correct:hover {
+            background: #66bb6a;
+        }
+
+        .final-btn-wrong {
+            background: #cc0000;
+        }
+
+        .final-btn-wrong:hover {
+            background: #ff0000;
+        }
+
+        .final-btn-correct:disabled,
+        .final-btn-wrong:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .final-wager:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .final-complete {
+            text-align: center;
+        }
+
+        .complete-btn {
+            padding: 16px 48px;
+            font-size: 2rem;
+            font-weight: 700;
+            background: #ff8c00;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .complete-btn:hover {
+            background: #ff9933;
         }
     </style>
 </Layout>

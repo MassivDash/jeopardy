@@ -1,0 +1,64 @@
+---
+
+---
+
+<div id="scoreBar" class="score-bar">
+    <div id="scoresList" class="scores-list"></div>
+</div>
+
+<style is:global>
+    .score-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, #1a1a1a, #2d1b0e);
+        border-top: 3px solid #ff8c00;
+        padding: 16px;
+        z-index: 9999;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .scores-list {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .score-item {
+        background: #ff8c00;
+        padding: 12px 20px;
+        border-radius: 8px;
+        min-width: 150px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .score-item.winner {
+        background: #4caf50;
+        border: 3px solid #ffd700;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    .score-item .player-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 4px;
+    }
+
+    .score-item .player-score {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .score-item .player-score.negative {
+        color: #ff4444;
+    }
+</style>
+

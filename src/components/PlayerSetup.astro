@@ -1,0 +1,149 @@
+---
+
+---
+
+<div id="playerSetup" class="player-setup hidden">
+    <div class="player-setup-content">
+        <h2>Setup Players</h2>
+        <p>Add players and give them names</p>
+
+        <div id="playersList" class="players-list"></div>
+
+        <div class="player-setup-controls">
+            <button id="addPlayerBtn" class="btn-add">+ Add Player</button>
+            <button id="startGameBtn" class="btn-start" disabled
+                >Start Game</button
+            >
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .player-setup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    }
+
+    .player-setup.hidden {
+        display: none;
+    }
+
+    .player-setup-content {
+        background: #1a1a1a;
+        border: 2px solid #ff8c00;
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 600px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .player-setup-content h2 {
+        color: #ff8c00;
+        margin: 0 0 0.5rem 0;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .player-setup-content p {
+        color: #fff;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+    }
+
+    .players-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+    }
+
+    .player-item {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        background: #2d2d2d;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .player-item input {
+        flex: 1;
+        padding: 10px;
+        font-size: 1.2rem;
+        border: 2px solid #555;
+        border-radius: 6px;
+        background: #1a1a1a;
+        color: #fff;
+    }
+
+    .player-item input:focus {
+        outline: none;
+        border-color: #ff8c00;
+    }
+
+    .btn-remove {
+        background: #cc0000;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 16px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .btn-remove:hover {
+        background: #ff0000;
+    }
+
+    .player-setup-controls {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .btn-add,
+    .btn-start {
+        padding: 12px 24px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .btn-add {
+        background: #4caf50;
+        color: #fff;
+    }
+
+    .btn-add:hover {
+        background: #66bb6a;
+    }
+
+    .btn-start {
+        background: #ff8c00;
+        color: #fff;
+    }
+
+    .btn-start:hover:not(:disabled) {
+        background: #ff9933;
+    }
+
+    .btn-start:disabled {
+        background: #555;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+</style>
+
