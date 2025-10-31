@@ -1,0 +1,384 @@
+{
+    "id": "leoHalloween",
+    "title": "Leo Halloween Jeopardy",
+    "levels": [
+        {
+            "level": 1,
+            "categories": [
+                {
+                    "name": "Kreskówki",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kot, który goni mysz Jerry",
+                            "answer": "Kim jest Tom?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Żółty bohater z Springfield",
+                            "answer": "Kim jest Bart Simpson?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Pies detektyw rozwiązujący zagadki",
+                            "answer": "Kim jest Scooby-Doo?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Księżniczka z długimi złotymi włosami",
+                            "answer": "Kim jest Roszpunka?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Robot kot z przyszłości pomagający Nobicie",
+                            "answer": "Kim jest Doraemon?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Lego",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kraj, z którego pochodzi Lego",
+                            "answer": "Czym jest Dania?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Seria Lego z rycerzami i zamkami",
+                            "answer": "Czym jest Castle?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Małe żółte główki postaci Lego",
+                            "answer": "Czym są minifigurki?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Seria Lego z kosmitami i statkami kosmicznymi",
+                            "answer": "Czym jest Space?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Seria Lego z ninja w kolorowych strojach",
+                            "answer": "Czym jest Ninjago?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Kaczor Donald",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Liczba siostrzeńców Donalda",
+                            "answer": "Ile to trzech?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Imię dziewczyny Donalda",
+                            "answer": "Kim jest Daisy?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Miasto, w którym mieszka Donald",
+                            "answer": "Czym jest Duckburg?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Wuj Donalda, najbogatszy kaczor świata",
+                            "answer": "Kim jest Sknerus McKwacz?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Imiona trzech siostrzeńców Donalda",
+                            "answer": "Kim są Hyzio, Dyzio i Zyzio?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Sonic",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kolor Sonica",
+                            "answer": "Czym jest niebieski?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Główny wróg Sonica",
+                            "answer": "Kim jest Dr Robotnik?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Najlepszy przyjaciel Sonica, lis o dwóch ogonach",
+                            "answer": "Kim jest Tails?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Przedmioty, które Sonic zbiera w grach",
+                            "answer": "Czym są pierścienie?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Kolczasta różowa postać z zespołu Sonica",
+                            "answer": "Kim jest Knuckles?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Układ Słoneczny",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Planeta najbliższa Słońcu",
+                            "answer": "Czym jest Merkury?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Najwieksza planeta Układu Słonecznego",
+                            "answer": "Czym jest Jowisz?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Planeta z pierścieniami",
+                            "answer": "Czym jest Saturn?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Czerwona planeta",
+                            "answer": "Czym jest Mars?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Naturalne światło na nocnym niebie Ziemi",
+                            "answer": "Czym jest Księżyc?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Anatomia Człowieka",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Organ, który pompuje krew",
+                            "answer": "Czym jest serce?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Liczba kości w ciele dorosłego człowieka",
+                            "answer": "Ile to 206?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Organ odpowiedzialny za myślenie",
+                            "answer": "Czym jest mózg?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Organy służące do oddychania",
+                            "answer": "Czym są płuca?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Najdłuższa kość w ciele człowieka",
+                            "answer": "Czym jest kość udowa?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "categories": [
+                {
+                    "name": "Akademia Pana Kleksa",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Autor książki o Panu Kleksie",
+                            "answer": "Kim jest Jan Brzechwa?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Imię głównego bohatera ucznia Kleksa",
+                            "answer": "Kim jest Adaś?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Ptak, który pomaga w Akademii",
+                            "answer": "Kim jest Mateusz?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Sposób podróży do Akademii Pana Kleksa",
+                            "answer": "Czym jest atrament?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Liczba tomów przygód w Akademii",
+                            "answer": "Ile to trzy?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Polskie Święta",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Święto 3 maja w Polsce",
+                            "answer": "Czym jest Święto Konstytucji 3 Maja?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Dzień, kiedy obchodzimy Wigilie",
+                            "answer": "Czym jest 24 grudnia?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Święto patrona Polski",
+                            "answer": "Czym jest Święto Świętego Stanisława?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Dzień Wszystkich Świętych",
+                            "answer": "Czym jest 1 listopada?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Święto odzyskania niepodległości",
+                            "answer": "Czym jest 11 listopada?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Zwierzęta",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Największy ssak na świecie",
+                            "answer": "Czym jest płetwal błękitny?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Najszybsze zwierzę na lądzie",
+                            "answer": "Czym jest gepard?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Zwierze, które może zmieniać kolor",
+                            "answer": "Czym jest kameleon?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Jedyny ssak potrafiący latać",
+                            "answer": "Czym jest nietoperz?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Najwyższe zwierzę na świecie",
+                            "answer": "Czym jest żyrafa?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Starożytne Cywilizacje",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Cywilizacja, która zbudowała piramidy",
+                            "answer": "Czym jest starożytny Egipt?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Miejsce narodzin demokracji",
+                            "answer": "Czym jest starożytna Grecja?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Imperium, które zbudowało Koloseum",
+                            "answer": "Czym jest starożytny Rzym?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Cywilizacja Majów znajdowała się na tym kontynencie",
+                            "answer": "Czym jest Ameryka Północna?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Wielki Mur został zbudowany w tym kraju",
+                            "answer": "Czym są Chiny?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Sławne Osoby",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Twórca teorii względności",
+                            "answer": "Kim jest Albert Einstein?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Pierwszy człowiek na Księżycu",
+                            "answer": "Kim jest Neil Armstrong?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Malarka, która namalowała 'Dziewczynę z perłą'",
+                            "answer": "Kim jest Johannes Vermeer?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Kompozytor, który napisał 'Dla Elizy'",
+                            "answer": "Kim jest Ludwig van Beethoven?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Słynna fizyczka, która otrzymała dwie nagrody Nobla",
+                            "answer": "Kim jest Maria Skłodowska-Curie?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Halloween i Sławne Potwory",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Dzień obchodów Halloween",
+                            "answer": "Czym jest 31 października?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Wampir z Transylwanii",
+                            "answer": "Kim jest Dracula?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Potwór stworzony przez doktora",
+                            "answer": "Kim jest Frankenstein?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Człowiek, który zmienia się w wilka",
+                            "answer": "Czym jest wilkołak?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Dynia z wykrojoną twarzą na Halloween",
+                            "answer": "Czym jest Jack-o'-lantern?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "final": {
+                "question": "Final: Stolica Polski przed Warszawą",
+                "answer": "Czym jest Kraków?",
+                "value": 2000
+            }
+        }
+    ]
+}

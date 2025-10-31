@@ -1,0 +1,384 @@
+{
+    "id": "kids_polish",
+    "title": "Leo Halloween Jeopardy 2",
+    "levels": [
+        {
+            "level": 1,
+            "categories": [
+                {
+                    "name": "Filmy Disneya",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Księżniczka ze szklanymi pantofelkami",
+                            "answer": "Kim jest Kopciuszek?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Lwiątko, które zostaje królem",
+                            "answer": "Kim jest Simba?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Syrenka, która chce być człowiekiem",
+                            "answer": "Kim jest Arielka?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Bałwanek, który kocha ciepłe uściski",
+                            "answer": "Kim jest Olaf?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Słoń z dużymi uszami, który potrafi latać",
+                            "answer": "Kim jest Dumbo?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Zwierzęta Gospodarskie",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Zwierzę, które robi 'muuu'",
+                            "answer": "Czym jest krowa?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Różowe zwierzę, które taplaje się w błocie",
+                            "answer": "Czym jest świnia?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Wełniste zwierzę, które robi 'beee'",
+                            "answer": "Czym jest owca?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Ptak, który budzi wszystkich rano",
+                            "answer": "Czym jest kogut?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Zwierzę, które daje nam jajka",
+                            "answer": "Czym jest kura?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Kolory",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kolor słońca",
+                            "answer": "Czym jest żółty?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Kolor trawy",
+                            "answer": "Czym jest zielony?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Kolor znaków stop",
+                            "answer": "Czym jest czerwony?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Kolor oceanu",
+                            "answer": "Czym jest niebieski?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Kolor, który powstaje z mieszania czerwonego i niebieskiego",
+                            "answer": "Czym jest fioletowy?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Jedzenie",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Czerwony owoc, który odgania doktora",
+                            "answer": "Czym jest jabłko?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Żółty owoc, który lubią małpy",
+                            "answer": "Czym jest banan?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Pomarańczowe warzywo, które pomaga widzieć w ciemności",
+                            "answer": "Czym jest marchewka?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Biały napój, który pochodzi od krów",
+                            "answer": "Czym jest mleko?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Słodkość zrobiona z ziaren kakao",
+                            "answer": "Czym jest czekolada?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Liczby",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Liczba palców na jednej ręce",
+                            "answer": "Ile to pięć?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Liczba nóg u pająka",
+                            "answer": "Ile to osiem?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Liczba dni w tygodniu",
+                            "answer": "Ile to siedem?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Liczba kół u roweru",
+                            "answer": "Ile to dwa?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Liczba boków trójkąta",
+                            "answer": "Ile to trzy?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Części Ciała",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Część ciała, którą widzimy",
+                            "answer": "Czym są oczy?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Część ciała, którą słyszymy",
+                            "answer": "Czym są uszy?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Część ciała, którą wąchamy",
+                            "answer": "Czym jest nos?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Część ciała, którą smakujemy jedzenie",
+                            "answer": "Czym jest język?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Część ciała, która pompuje krew",
+                            "answer": "Czym jest serce?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "categories": [
+                {
+                    "name": "Superbohaterowie",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Bohater, który wspina się po ścianach i strzela pajęczyną",
+                            "answer": "Kim jest Spider-Man?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Bohater z czerwoną peleryną, który potrafi latać",
+                            "answer": "Kim jest Superman?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Bohater z tarczą w gwiazdach i pasach",
+                            "answer": "Kim jest Kapitan Ameryka?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Zielony bohater, który staje się silniejszy gdy się złości",
+                            "answer": "Kim jest Hulk?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Bohater, który mieszka w jaskini i walczy z przestępcami nocą",
+                            "answer": "Kim jest Batman?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Zwierzęta Oceaniczne",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Największe zwierzę w oceanie",
+                            "answer": "Czym jest płetwal błękitny?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Ryba z ostrymi zębami, której ludzie się boją",
+                            "answer": "Czym jest rekin?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Morskie zwierzę z ośmioma ramionami",
+                            "answer": "Czym jest ośmiornica?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Mądry ssak oceaniczny, który robi sztuczki",
+                            "answer": "Czym jest delfin?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Kolorowa ryba, która mieszka w rafach koralowych",
+                            "answer": "Czym jest rybka błazenek?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pogoda",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Zamarznięta woda spadająca z nieba",
+                            "answer": "Czym jest śnieg?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Głośny dźwięk po błyskawicy",
+                            "answer": "Czym jest grzmot?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Kolorowy łuk na niebie po deszczu",
+                            "answer": "Czym jest tęcza?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Silny wiatr, który kręci się w kółko",
+                            "answer": "Czym jest tornado?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Krople wody spadające z chmur",
+                            "answer": "Czym jest deszcz?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Przygoda Kosmiczna",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Jasna gwiazda, która daje nam światło i ciepło",
+                            "answer": "Czym jest Słońce?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Naturalny satelita Ziemi, który świeci w nocy",
+                            "answer": "Czym jest Księżyc?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Czerwona planeta obok Ziemi",
+                            "answer": "Czym jest Mars?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Pojazd, który zabiera astronautów w kosmos",
+                            "answer": "Czym jest rakieta?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Migoczące światła, które widzimy na nocnym niebie",
+                            "answer": "Czym są gwiazdy?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Baśnie",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Dziewczyna, która zgubiła pantofelek o północy",
+                            "answer": "Kim jest Kopciuszek?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Chłopiec, który nigdy nie dorósł i potrafił latać",
+                            "answer": "Kim jest Piotruś Pan?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Dziewczyna z bardzo długimi włosami w wieży",
+                            "answer": "Kim jest Roszpunka?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Trzy zwierzęta, które zbudowały domki z różnych materiałów",
+                            "answer": "Kim są Trzy Małe Świnki?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Dziewczyna, która zjadła owsiankę i złamała krzesło",
+                            "answer": "Kim jest Złotowłosa?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Święta",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Święto, kiedy składamy dziękczynienia i jemy indyka",
+                            "answer": "Czym jest Święto Dziękczynienia?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Święto z prezentami pod choinką",
+                            "answer": "Czym są Boże Narodzenie?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Święto, kiedy przebieramy się za potwory",
+                            "answer": "Czym jest Halloween?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Polskie święto 3 maja",
+                            "answer": "Czym jest Święto Konstytucji?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Wiosenne święto, kiedy szukamy kolorowych jajek",
+                            "answer": "Czym jest Wielkanoc?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "final": {
+                "question": "Final: Pierwszy człowiek, który chodził po Księżycu",
+                "answer": "Kim jest Neil Armstrong?",
+                "value": 2000
+            }
+        }
+    ]
+}
