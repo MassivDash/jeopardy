@@ -15,7 +15,7 @@
                         },
                         {
                             "value": 200,
-                            "question": "Żółty bohater z Springfield",
+                            "question": "Żółty bohater z Springfield, nieznosny brat lisy",
                             "answer": "Kim jest Bart Simpson?"
                         },
                         {
@@ -25,13 +25,13 @@
                         },
                         {
                             "value": 400,
-                            "question": "Księżniczka z długimi złotymi włosami",
+                            "question": "Księżniczka z bardzo długimi złotymi włosami",
                             "answer": "Kim jest Roszpunka?"
                         },
                         {
                             "value": 500,
-                            "question": "Robot kot z przyszłości pomagający Nobicie",
-                            "answer": "Kim jest Doraemon?"
+                            "question": "szybkie samochody które się ścigają",
+                            "answer": "Czym jest hot wheels?"
                         }
                     ]
                 },
@@ -40,18 +40,18 @@
                     "questions": [
                         {
                             "value": 100,
-                            "question": "Kraj, z którego pochodzi Lego",
-                            "answer": "Czym jest Dania?"
+                            "question": "male figurka która pojawia się w zestawach lego",
+                            "answer": "Czym jest mini figurka?"
                         },
                         {
                             "value": 200,
-                            "question": "Seria Lego z rycerzami i zamkami",
-                            "answer": "Czym jest Castle?"
+                            "question": "Seria Lego z budynkami i samochodami",
+                            "answer": "Czym jest lego city?"
                         },
                         {
                             "value": 300,
-                            "question": "Małe żółte główki postaci Lego",
-                            "answer": "Czym są minifigurki?"
+                            "question": "sklep z tylko lego",
+                            "answer": "Czym jest lego store?"
                         },
                         {
                             "value": 400,
@@ -165,8 +165,8 @@
                         },
                         {
                             "value": 200,
-                            "question": "Liczba kości w ciele dorosłego człowieka",
-                            "answer": "Ile to 206?"
+                            "question": "Organ, odpowiedzialny za sluch",
+                            "answer": "Czym sa uszy?"
                         },
                         {
                             "value": 300,
@@ -255,8 +255,8 @@
                     "questions": [
                         {
                             "value": 200,
-                            "question": "Największy ssak na świecie",
-                            "answer": "Czym jest płetwal błękitny?"
+                            "question": "Najwyższe zwierzę na świecie",
+                            "answer": "Czym jest żyrafa?"
                         },
                         {
                             "value": 400,
@@ -275,8 +275,8 @@
                         },
                         {
                             "value": 1000,
-                            "question": "Najwyższe zwierzę na świecie",
-                            "answer": "Czym jest żyrafa?"
+                            "question": "Największy ssak na świecie",
+                            "answer": "Czym jest płetwal błękitny?"
                         }
                     ]
                 },
@@ -325,17 +325,17 @@
                         },
                         {
                             "value": 600,
-                            "question": "Malarka, która namalowała 'Dziewczynę z perłą'",
-                            "answer": "Kim jest Johannes Vermeer?"
+                            "question": "Twórca hitu black or white, billyjean or bad",
+                            "answer": "Kim jest Michael Jackson?"
                         },
                         {
                             "value": 800,
-                            "question": "Kompozytor, który napisał 'Dla Elizy'",
-                            "answer": "Kim jest Ludwig van Beethoven?"
+                            "question": "Slawny koszykarz z Chicago Bulls, z numerem 23",
+                            "answer": "Kim jest Michael Jordan?"
                         },
                         {
                             "value": 1000,
-                            "question": "Słynna fizyczka, która otrzymała dwie nagrody Nobla",
+                            "question": "Słynna fizyczka z Polski, która otrzymała dwie nagrody Nobla",
                             "answer": "Kim jest Maria Skłodowska-Curie?"
                         }
                     ]
@@ -365,8 +365,8 @@
                         },
                         {
                             "value": 1000,
-                            "question": "Dynia z wykrojoną twarzą na Halloween",
-                            "answer": "Czym jest Jack-o'-lantern?"
+                            "question": "Wodny potwor z jeziora",
+                            "answer": "Czym jest Loch Ness?"
                         }
                     ]
                 }
