@@ -1,0 +1,414 @@
+{
+    "id": "va_banque",
+    "title": "Va Banque – pytania Leo",
+    "levels": [
+        {
+            "level": 1,
+            "categories": [
+                {
+                    "name": "Sonic",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Co zazwyczaj zbiera Sonic w swoich grach, by przeszkodzić wrogom?",
+                            "answer": "Czym są złote pierścienie?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Kto jest najlepszym przyjacielem Sonica?",
+                            "answer": "Kim jest Tails?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Co sprawia, że Sonic może zamienić się w swoją super wersję?",
+                            "answer": "Czym są szmaragdy Chaosu?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Czy Sonic zrobił grę „crossoverową” z Mariem? Jeśli tak, to jaką?",
+                            "answer": "Tak – Mario & Sonic na Igrzyskach Olimpijskich"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Wymień wszystkie grywalne postacie z gry Sonic Forces",
+                            "answer": "Kim są: Sonic, Classic Sonic i Avatar (własna postać gracza)?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Bajki i filmy",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kto jest przyjacielem Batmana z policji?",
+                            "answer": "Kim jest komisarz Gordon?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Jak nazywa się dziewczyna Gumballa?",
+                            "answer": "Kim jest Penny?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Jak nazywa się pies Steva z filmu Minecraft?",
+                            "answer": "Kim jest Dennis (wilk)?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Kto jest księżniczką z innej planety i należy do Młodych Tytanów?",
+                            "answer": "Kim jest Starfire?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Czy w ostatnim odcinku Sonic Prime udało się Sonicowi wrócić do domu?",
+                            "answer": "Tak, Sonic wraca do domu"
+                        }
+                    ]
+                },
+                {
+                    "name": "Gry",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Jak nazywa się studio, które robi gry o Pokemonach, Mariu i Zeldzie?",
+                            "answer": "Czym jest Nintendo?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Nazwij dwie gry, które zostały zrobione przez Disneya",
+                            "answer": "Czym są np. Disney Dreamlight Valley i Disney Magic Kingdoms?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "W której odsłonie Goat Simulatora da się stać burmistrzem miasta?",
+                            "answer": "Czym jest Goat Simulator 3?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Czy w grze „Super Smash Bros” wszystkie postacie są grywalne, czy trzeba je po kolei odblokowywać?",
+                            "answer": "Trzeba je po kolei odblokowywać"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Czy istnieje jakakolwiek gra na telefon o Gumballu?",
+                            "answer": "Tak – np. Gumball Rush / Gumball's Amazing Party Game"
+                        }
+                    ]
+                },
+                {
+                    "name": "Marvel",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Z jakiego metalu wykonano tarczę Kapitana Ameryki?",
+                            "answer": "Czym jest wibranium?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Fikcyjna, ukryta przed światem afrykańska kraina z zaawansowaną technologią i ojczyzna Czarnej Pantery",
+                            "answer": "Czym jest Wakanda?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Jego głównym celem było wymazanie połowy życia za pomocą Rękawicy Nieskończoności",
+                            "answer": "Kim jest Thanos?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Potężny artefakt, zawierał w sobie Kamień Przestrzeni i pojawił się po raz pierwszy w „Thorze”",
+                            "answer": "Czym jest Tesseract?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Legendarny twórca komiksów Marvela, współtwórca Spider-Mana i Iron-Mana",
+                            "answer": "Kim jest Stan Lee?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Historia",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Kto odkrył Amerykę?",
+                            "answer": "Kim jest Krzysztof Kolumb?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Kto był pierwszym prezydentem Ameryki?",
+                            "answer": "Kim jest George Washington?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Co to rasizm?",
+                            "answer": "Czym jest niesprawiedliwe traktowanie ludzi z powodu rasy lub koloru skóry?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Kto wynalazł elektryczność?",
+                            "answer": "Nikt jej nie wynalazł – ludzie ją odkryli (m.in. Faraday, Tesla, Edison)"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Kto wynalazł telefon?",
+                            "answer": "Kim jest Alexander Graham Bell?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Memy i internetowy śmietnik",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Co to ten czarno-biały rysunek przedstawiający szeroko uśmiechniętą postać z dużym podbródkiem i służy do trollowania?",
+                            "answer": "Czym jest Trollface?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Kto jest naszym prezydentem teraz?",
+                            "answer": "Kim jest Karol Nawrocki?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Z jakiej platformy (scrollingowej) dostajemy najwięcej memów?",
+                            "answer": "Czym jest TikTok?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Wymień dwa klasyczne memy",
+                            "answer": "Czym są np. Trollface, Doge, Nyan Cat, Rickroll?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Co to mem „Dziewczynka katastrofa”?",
+                            "answer": "Czym jest zdjęcie uśmiechniętej dziewczynki na tle płonącego domu (Disaster Girl)?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Najtrudniejsza kategoria – nie wybierajcie!!!",
+                    "questions": [
+                        {
+                            "value": 100,
+                            "question": "Ile to 2+2?",
+                            "answer": "Ile to 4?"
+                        },
+                        {
+                            "value": 200,
+                            "question": "Co świeci w dzień?",
+                            "answer": "Czym jest Słońce?"
+                        },
+                        {
+                            "value": 300,
+                            "question": "Co rośnie na drzewach?",
+                            "answer": "Czym są liście (i owoce)?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Czym oddycham?",
+                            "answer": "Czym jest powietrze (tlen)?"
+                        },
+                        {
+                            "value": 500,
+                            "question": "Jak nazywa się przyjaciel Kingera z Cyfrowego Cyrku?",
+                            "answer": "Kim jest Queenie?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "categories": [
+                {
+                    "name": "Napoje",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Kto jest największym rywalem Coca-Coli?",
+                            "answer": "Czym jest Pepsi?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Co to jest H2O?",
+                            "answer": "Czym jest woda?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Czy kiedykolwiek w sprzedaży było mleko gazowane?",
+                            "answer": "Tak – mleko gazowane istniało"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Jaki jest mój ulubiony napój?",
+                            "answer": "Czym jest Coca-Cola?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Kim był (przed założeniem firmy) założyciel Coca-Coli?",
+                            "answer": "Kim jest aptekarz (John Pemberton)?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ja",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Wolę wodę gazowaną czy niegazowaną?",
+                            "answer": "Gazowaną"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Jaki jest mój ulubiony kolor?",
+                            "answer": "Czym jest zielony?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Ile LED-ów mam w pokoju?",
+                            "answer": "ile to 2"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Jakie jest moje ulubione jedzenie?",
+                            "answer": "Czym jest spagetti?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Wymień wszystkie rzeczy, którymi się interesuję",
+                            "answer": "Czym są: Sonic, TADC, Undertale, Deltarune, Hollow Knight?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Among Us",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Wyjaśnij, na czym polega rozgrywka Among Usa",
+                            "answer": "Kim są Załoga wykonująca zadania i Impostor, którego trzeba znaleźć i wyrzucić?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Skąd się wzięło powiedzenie, że coś jest „sus” (podejrzane)?",
+                            "answer": "Czym jest skrót od „suspicious” – z gry Among Us"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Czy w grze jest zwierzątko UFO?",
+                            "answer": "Tak, jest zwierzątko UFO"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Jaka jest waluta w Among Usie?",
+                            "answer": "Czym są fasolki (Beans)?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Wymień wszystkie nowe role w nowym updacie Among Usa (2024–2025)",
+                            "answer": "Kim są: Tracker, Detective, Phantom, Viper?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Minecraft",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Za pomocą czego da się oswoić psa w Minecrafcie?",
+                            "answer": "Czym są kości?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Wymień wszystkie rzeczy potrzebne do budowy portalu do Nethera",
+                            "answer": "Czym są: obsydian i krzesiwo?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Ile oczu Endu potrzeba, by aktywować portal do Endu?",
+                            "answer": "Ile to 12?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Co zwiększa czas działania mikstur w Minecrafcie?",
+                            "answer": "Czym jest pył redstone?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Do czego służy Agent w Minecraft Education?",
+                            "answer": "Do nauki programowania i automatyzacji różnych zadań w grze"
+                        }
+                    ]
+                },
+                {
+                    "name": "Halloween",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Jedyny latający ssak, który jest często związany z Halloween",
+                            "answer": "Czym jest nietoperz?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Co to ta fikcyjna, ekscentryczna i mroczna rodzina mieszkająca w starym zamczysku, a ich córka jest słynna Wednesday?",
+                            "answer": "Kim jest Rodzina Addamsów?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Istnieje pewna piosenka, która jest wzorowana na szkieletach. Dokończ zdanie: Spooky...",
+                            "answer": "Czym jest „Spooky Scary Skeletons”?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Gdzie są najbardziej wystrojone domy na Halloween na całym świecie?",
+                            "answer": "Czym są Stany Zjednoczone?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Z jakiego warzywa, zanim stała się popularna dynia, Irlandczycy drążyli pierwsze lampiony?",
+                            "answer": "Czym jest rzepa (lub burak / ziemniak)?"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pytania Antka",
+                    "questions": [
+                        {
+                            "value": 200,
+                            "question": "Jaki jest ulubiony sport Antka?",
+                            "answer": "Czym jest piłka nożna?"
+                        },
+                        {
+                            "value": 400,
+                            "question": "Co ma cztery nogi, ale nie chodzi i stawia się na nim jedzenie, a czasami nogi?",
+                            "answer": "Czym jest stół?"
+                        },
+                        {
+                            "value": 600,
+                            "question": "Co to znaczy „Tadek dziurbałsię”?",
+                            "answer": "Kim jest Tadek, który bał się dziur (trypofobia)?"
+                        },
+                        {
+                            "value": 800,
+                            "question": "Co Antek najbardziej lubi rysować?",
+                            "answer": "Kim są Spider-Man i Ninja Żółwie?"
+                        },
+                        {
+                            "value": 1000,
+                            "question": "Pociąg jedzie bardzo szybko wokół cmentarza i się nie zatrzymuje, a pan Staszek chce trafić na cmentarz. Co musi zrobić?",
+                            "answer": "Musi wyskoczyć z pociągu"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "final": {
+                "question": "Final: Jak nazywa się doktor, główny wróg Sonica?",
+                "answer": "Kim jest doktor Eggman (Ivo Robotnik)?",
+                "value": 2000
+            }
+        }
+    ]
+}
